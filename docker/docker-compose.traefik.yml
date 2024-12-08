@@ -1,0 +1,13 @@
+services:
+  ghostfolio:
+    networks:
+      - default
+      - proxy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ghostfolio.rule=Host(`${GHOSTFOLIO_URL}`)"
+      - "traefik.http.routers.ghostfolio.tls=true"
+
+networks:
+  proxy-network:
+    external: true
